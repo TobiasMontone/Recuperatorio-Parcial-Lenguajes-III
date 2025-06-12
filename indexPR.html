@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylePR.css">
+    <script src="validaciones.js"></script>
+    <title> Simulador costos de vuelo </title>
+</head>
+
+<body>
+    <div class="form-container">
+        <form id="formularioVuelo">
+            <h1>Simulador de Costos de Boletos de vuelo</h1>
+
+            <div class="form-group">
+                <label for="origen">Origen:</label>
+                <input type="text" id="origen" value="SLA - Salta" readonly>
+            </div>
+            
+            <div class="form-group">
+                <label for="destino">Destino:</label>
+                <select id="destino" required>
+                    <option value="">Seleccione un destino</option>
+                    <option value="COR">COR-Córdoba</option>
+                    <option value="MDZ">MDZ-Mendoza</option>
+                    <option value="BUE">BUE-Buenos Aires</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="Precio">Precios de los Boletos</label>
+                <input type="text" id="precio" value="SLA-COR $120.000,00 ida/vuelta" readonly>
+                <input type="text" id="precio" value="SLA-MDZ $210.800,00 ida/vuelta" readonly>
+                <input type="text" id="precio" value="SLA-BUE $135.000,00 ida/vuelta" readonly>
+            </div>
+
+            <div class="form-group">
+                <label>Opciones:</label>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="ida" name="tipoVuelo" value="ida" checked>
+                        <label for="ida" style="font-weight: normal;">IDA</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="idaVuelta" name="tipoVuelo" value="idaVuelta">
+                        <label for="idaVuelta" style="font-weight: normal;">IDA/VUELTA</label>
+                    </div>
+                </div>
+            </div>
+
+                
+            
+            <div class="form-group">
+                <label for="fechaIda">Fecha Ida:</label>
+                <input type="date" id="fechaIda" required>
+                <div id="errorFechaIda" class="error">La fecha de ida no puede estar vacía</div>
+            </div>
+            
+            <div class="form-group" id="grupoFechaVuelta" style="display: none;">
+                <label for="fechaVuelta">Fecha Vuelta:</label>
+                <input type="date" id="fechaVuelta">
+                <div id="errorFechaVuelta" class="error">La fecha de vuelta debe ser mayor que la de Ida</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="pasajeros">Pasajeros:</label>
+                <input type="number" id="pasajeros" min="1" value="1" required>
+                <div id="errorPasajeros" class="error">Debe haber al menos 1 pasajero</div>
+            </div>
+            
+            <button type="button" id="calcular">Simular</button>
+        </form>
+        
+        <div id="resultado">
+            <h3>Precio Total (incluido IVA):</h3>
+            <div class="precio" id="precioTotal">$ 0,00</div>
+        </div>
+
+    </div>
+
+</body>
+</html>
